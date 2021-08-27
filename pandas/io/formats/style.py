@@ -1127,7 +1127,7 @@ class Styler(StylerRenderer):
         """
         Reset the ``Styler``, removing any previously applied styles.
 
-        Returns None.
+
         """
         # create default GH 40675
         clean_copy = Styler(self.data, uuid=self.uuid)
