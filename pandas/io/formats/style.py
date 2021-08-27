@@ -1148,9 +1148,10 @@ class Styler(StylerRenderer):
         subset = slice(None) if subset is None else subset
         subset = non_reducing_slice(subset)
         data = self.data.loc[subset]
-        if axis in [0, "index"]:
+        axis = self._get_axis_number(axis)
+        if axis == 0:
             result = data.apply(func, axis=0, **kwargs)
-        elif axis in [1, "columns"]:
+        elif axis == 1:
             result = data.T.apply(func, axis=0, **kwargs).T  # see GH 42005
         else:
             result = func(data, **kwargs)

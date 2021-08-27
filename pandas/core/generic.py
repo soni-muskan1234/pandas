@@ -8646,7 +8646,8 @@ class NDFrame(PandasObject, indexing.IndexingMixin):
         else:
             # one has > 1 ndim
             fdata = self._mgr
-            if axis in [0, 1]:
+            axis = self._get_axis_number(axis)
+            if axis == 0 or axis == 1:
                 join_index = self.axes[axis]
                 lidx, ridx = None, None
                 if not join_index.equals(other.index):
